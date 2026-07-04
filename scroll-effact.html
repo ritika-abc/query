@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<style>
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --gutter: 2rem;
+}
+
+@media (max-width: 600px) {
+  :root {
+    --gutter: 1rem;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: #000;
+  color: #fff;
+}
+
+/* ---------- GENERIC SECTIONS ---------- */
+section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+/* ---------- INTRO ---------- */
+.intro {
+  justify-content: flex-start;
+  padding: 0 var(--gutter);
+}
+
+.intro h1 {
+  font-size: clamp(2rem, 6vw, 5rem);
+  max-width: 600px;
+  line-height: 1.1;
+}
+
+/* ---------- OUTRO ---------- */
+.outro {
+  justify-content: center;
+  text-align: center;
+}
+
+.outro h1 {
+  font-size: clamp(2rem, 6vw, 5rem);
+}
+
+/* ---------- ANIMATION SECTION ---------- */
+.content-wrap {
+  background: #000;
+  overflow: clip;
+}
+
+.animation-section {
+  min-height: 240vh;
+}
+
+.content {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  place-items: center;
+  align-content: center;
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+}
+
+.grid {
+  --offset: 0;
+  --container-width: 1600px;
+  --gap: clamp(10px, 7.35vw, 80px);
+  width: var(--container-width);
+  max-width: calc(100% - (2 * var(--gutter)));
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, auto);
+  gap: var(--gap);
+  margin: 0 auto;
+  align-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    --offset: -1;
+  }
+  .grid > .layer:nth-of-type(1) {
+    display: none;
+  }
+}
+
+.grid > .layer {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  grid-template-columns: subgrid;
+  grid-template-rows: subgrid;
+}
+
+.grid > .layer:nth-of-type(1) div:nth-of-type(odd) {
+  grid-column: 1;
+}
+.grid > .layer:nth-of-type(1) div:nth-of-type(even) {
+  grid-column: -2;
+}
+
+.grid > .layer:nth-of-type(2) div:nth-of-type(odd) {
+  grid-column: calc(2 + var(--offset));
+}
+.grid > .layer:nth-of-type(2) div:nth-of-type(even) {
+  grid-column: calc(-3 - var(--offset));
+}
+
+.grid > .layer:nth-of-type(3) div:first-of-type {
+  grid-column: calc(3 + var(--offset));
+  grid-row: 1;
+}
+.grid > .layer:nth-of-type(3) div:last-of-type {
+  grid-column: calc(3 + var(--offset));
+  grid-row: -1;
+}
+
+.grid img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.grid .scaler {
+  position: relative;
+  grid-area: 2 / calc(3 + var(--offset));
+}
+
+.scaler {
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.scaler img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  object-fit: cover;
+  border-radius: 1rem;
+  width: 100%;
+  height: 100%;
+}
+</style>
+</head>
+
+<body>
+
+<main>
+
+  <!-- INTRO -->
+  <section class="intro">
+    <h1>Scroll for One Piece</h1>
+  </section>
+
+  <!-- ANIMATION -->
+  <section class="animation-section">
+    <div class="content">
+      <div class="grid">
+
+        <div class="layer">
+          <div><img src="https://ik.imagekit.io/gopichakradhar/luffy/waiifu/6%20(2).jfif" /></div>
+          <div><img src="https://ik.imagekit.io/gopichakradhar/luffy/waiifu/11.jfif" /></div>
+          <div><img src="https://ik.imagekit.io/gopichakradhar/luffy/waiifu/9.jfif" /></div>
+          <div><img src="https://ik.imagekit.io/gopichakradhar/luffy/waiifu/nami.jfif" /></div>
+          <div><img src="https://ik.imagekit.io/gopichakradhar/luffy/waiifu/13.jfif" /></div>
+          <div><img src="https://ik.imagekit.io/gopichakradhar/luffy/waiifu/12.jfif" /></div>
+        </div>
+
+        <div class="layer">
+          <div><img src="https://ik.imagekit.io/gopichakradhar/luffy/waiifu/8.jfif" /></div>
+          <div><img src="https://ik.imagekit.io/gopichakradhar/luffy/waiifu/14.jfif" /></div>
+          <div><img src="https://ik.imagekit.io/gopichakradhar/luffy/waiifu/4%20(2).jfif" /></div>
+          <div><img src="https://ik.imagekit.io/gopichakradhar/luffy/waiifu/10.jfif" /></div>
+          <div><img src="https://ik.imagekit.io/gopichakradhar/luffy/waiifu/3%20(2).jfif" /></div>
+          <div><img src="https://ik.imagekit.io/gopichakradhar/luffy/waiifu/5%20(2).jfif" /></div>
+        </div>
+
+        <div class="layer">
+          <div><img src="https://ik.imagekit.io/gopichakradhar/luffy/waiifu/5%20(2).jfif" /></div>
+          <div><img src="https://ik.imagekit.io/gopichakradhar/luffy/waiifu/2%20(2).jfif" /></div>
+        </div>
+
+        <div class="scaler">
+          <img src="https://ik.imagekit.io/gopichakradhar/luffy/o2.jpeg" />
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTRO -->
+  <section class="outro">
+    <h1>One Piece is real</h1>
+  </section>
+
+</main>
+
+<script type="module">
+import { animate, scroll, cubicBezier } from 'https://cdn.jsdelivr.net/npm/motion@11.11.16/+esm';
+
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (!prefersReducedMotion) {
+  const image = document.querySelector('.scaler img');
+  const firstSection = document.querySelector('.animation-section');
+  const layers = document.querySelectorAll('.grid > .layer');
+
+  const naturalWidth = image.offsetWidth;
+  const naturalHeight = image.offsetHeight;
+  const viewportWidth = window.innerWidth;
+  const viewportHeight = window.innerHeight;
+
+  scroll(
+    animate(image, {
+      width: [viewportWidth, naturalWidth],
+      height: [viewportHeight, naturalHeight]
+    }),
+    {
+      target: firstSection,
+      offset: ['start start', '80% end end']
+    }
+  );
+
+  layers.forEach((layer, index) => {
+    const endOffset = `${1 - (index * 0.05)} end`;
+
+    scroll(
+      animate(layer, { opacity: [0, 0, 1] }),
+      { target: firstSection, offset: ['start start', endOffset] }
+    );
+
+    scroll(
+      animate(layer, { scale: [0, 0, 1] }),
+      { target: firstSection, offset: ['start start', endOffset] }
+    );
+  });
+}
+</script>
+
+</body>
+</html>
